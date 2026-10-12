@@ -1,58 +1,29 @@
-\# Parent=hidden?
-
-
+# Parent=hidden?
 
 The challenge links to a website at `https://parent.labyrinthctf.live/`. The flag is stored in a file outside the directory the site serves its pages from.
 
-
-
-\## Finding the file
-
-
+## Finding the file
 
 The main introduction page mentions a file called `NotGreekText.txt`, saved in the parent directory.
 
+## Working out the URL
 
-
-\## Working out the URL
-
-
-
-Open one of the text files that the site links to and look at its URL. This shows how paths look for the normal directory, like for pantheon.txt it looks like: 
-
-
+Open one of the text files that the site links to and look at its URL. This shows how paths look for the normal directory. For `ThePantheon.txt` it is:
 
 ```text
-
 https://parent.labyrinthctf.live/read.php?path=ThePantheon.txt
-
 ```
 
-
-
-The target file is in the parent directory, so the path has to go one level up. In a path, `../` means "go up one directory". Replacing the file name in the URL and adding `../` in front gives:
-
-
+The target file is in the parent directory, so the path has to go one level up. In a path, `../` means "go up one directory". Putting `../` in front of the file name in the `path` parameter gives:
 
 ```text
-
-https://parent.labyrinthctf.live/read.php?path=../NotGreekMyth.txt
-
+https://parent.labyrinthctf.live/read.php?path=../NotGreekText.txt
 ```
-
-
 
 Opening this URL shows the contents of the file, which includes the flag.
 
-
-
-\## Flag
-
-
+## Flag
 
 ```text
-
-labyrinth{norse\_gods\_know\_how\_to\_talk\_to\_their\_parents}
-
+labyrinth{norse_gods_know_how_to_talk_to_their_parents}
 ```
-
